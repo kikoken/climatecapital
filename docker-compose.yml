@@ -14,23 +14,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
     - traefik
-  web:
-    image: kikoken/climate-frontend
-    container_name: climate-frontend
-    ports:
-    - "3000:3000"
-    labels:
-    - traefik.enable=true
-    - "traefik.port=80"
-    - "traefik.frontend.rule=Host:climatecapital.io"
-    - "traefik.docker.network=traefik"
-    restart: always
-    command: serve -s build -l 3000 
-    networks:
-    - traefik
-    - climate
+  
 networks:
   traefik:
     external: true
-  climate:
-    driver: bridge
