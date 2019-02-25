@@ -1,7 +1,7 @@
 node_modules/
 build/
 dist/
-.env
-.lock
-.log
-.pem
+*.env
+*.lock
+*.log
+*.pem

@@ -1,10 +1,20 @@
 version: '3'
 services:
+  traefik:
+    image: traefik:alpine
+    ports:
+      - 80:80
+    volumes:
+      - /traefik:/etc/traefik
+      - /var/run/docker.sock:/var/run/docker.sock
   web:
     image: kikoken/climate-frontend
     container_name: climate-frontend
     ports:
     - "3000:3000"
+    labels:
+    - traefik.enable=true
+    - "traefik.frontend.rule=Host:climate.app"
     restart: always
     networks:
     - climate
