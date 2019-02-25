@@ -7,6 +7,8 @@ services:
     volumes:
       - /traefik:/etc/traefik
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+    - traefik
   web:
     image: kikoken/climate-frontend
     container_name: climate-frontend
@@ -17,7 +19,10 @@ services:
     - "traefik.frontend.rule=Host:climate.app"
     restart: always
     networks:
+    - traefik
     - climate
 networks:
+  traefik:
+    external: true
   climate:
     driver: bridge
