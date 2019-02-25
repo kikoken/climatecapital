@@ -2,14 +2,20 @@ version: '3'
 services:
   traefik:
     image: traefik:alpine
+    container_name: traefik
+    command: --docker --docker.domain=climatecapital.io
     ports:
       - 80:80
       - 8080:8080
     volumes:
-      - /traefik:/etc/traefik
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
     - traefik
+    labels:
+      - "traefik.frontend.rule=Host:climatecapital.io"
+      - "traefik.port=8080"
   web:
     image: kikoken/climate-frontend
     container_name: climate-frontend
@@ -17,7 +23,7 @@ services:
     - "3000:3000"
     labels:
     - traefik.enable=true
-    - "traefik.frontend.rule=Host:climate.app"
+    - "traefik.frontend.rule=Host:climatecapital.io"
     - "traefik.docker.network=traefik"
     restart: always
     command: serve -s build -l 3000 

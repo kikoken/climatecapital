@@ -20,9 +20,9 @@ caServer = "https://acme-v02.api.letsencrypt.org/directory"
   provider = "cloudflare"
   delayBeforeCheck = 0
   [[acme.domains]]
-  main = "*.app"
+  main = "*.io"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "climate.app"
+domain = "climatecapital.app"
 exposedByDefault = false
