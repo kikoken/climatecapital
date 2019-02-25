@@ -9,9 +9,6 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.api]
   address = ":8080"
 
-[api]
-entryPoint = "api"
-
 [acme]
 entryPoint = "https"
 storage = "/etc/traefik/acme/acme.json"

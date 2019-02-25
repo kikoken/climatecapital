@@ -6,10 +6,11 @@ services:
     command: --docker --docker.domain=climatecapital.io
     ports:
       - 80:80
+      - 443:443
       - 8080:8080
     volumes:
-      - ./traefik.toml:/traefik.toml
-      - ./acme.json:/acme.json
+      - $PWD/traefik.toml:/traefik.toml
+      - $PWD/acme.json:/acme.json
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
     - traefik
@@ -23,6 +24,7 @@ services:
     - "3000:3000"
     labels:
     - traefik.enable=true
+    - "traefik.port=80"
     - "traefik.frontend.rule=Host:climatecapital.io"
     - "traefik.docker.network=traefik"
     restart: always
