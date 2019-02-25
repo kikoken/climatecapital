@@ -15,7 +15,7 @@ services:
     networks:
     - traefik
   back:
-    build: "../2018-redux-todo-list-backend/"
+    image: kikoken/api-climate
     container_name: climate-api
     ports:
     - "8000:8000"
