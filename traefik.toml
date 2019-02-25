@@ -1,7 +1,7 @@
 defaultEntryPoints = ["http", "https"]
 
 [acme]
-  email = "info@ichasco.com"
+  email = "info@climatecapital.cloud"
   storageFile = "/acme.json"
   entryPoint = "https"
   acmeLogging = true
@@ -22,6 +22,6 @@ address = ":443"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "climatecapital.app"
+domain = "climatecapital.cloud"
 watch = true
 swarmmode = false
