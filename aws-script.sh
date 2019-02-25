@@ -18,8 +18,8 @@ curl -o /srv/docker/docker-compose.yml https://raw.githubusercontent.com/kikoken
 
 # copy in systemd unit file and register it so our compose file runs 
 # on system restart
-curl -o /etc/systemd/system/docker-compose-app.service https://raw.githubusercontent.com/kikoken/climatecapital/master/docker-compose-app.service
-systemctl enable docker-compose-app
+# curl -o /etc/systemd/system/docker-compose-app.service https://raw.githubusercontent.com/kikoken/climatecapital/master/docker-compose-app.service
+# systemctl enable docker-compose-app
 
 # start up the application via docker-compose
 docker-compose -f /srv/docker/docker-compose.yml up -d
