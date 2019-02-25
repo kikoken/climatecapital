@@ -18,6 +18,7 @@ services:
     - traefik.enable=true
     - "traefik.frontend.rule=Host:climate.app"
     restart: always
+    command: serve -s build -l 3000 
     networks:
     - traefik
     - climate
