@@ -1,25 +1,13 @@
-defaultEntryPoints = ["http", "https"]
-
+defaultEntryPoints = ["http"]
 [entryPoints]
-  [entryPoints.http]
-  address = ":80"
-  [entryPoints.https]
-  address = ":443"
-    [entryPoints.https.tls]
-  [entryPoints.api]
-  address = ":8080"
+ [entryPoints.http]
+   address = ":80"
 
-[acme]
-entryPoint = "https"
-storage = "/etc/traefik/acme/acme.json"
-caServer = "https://acme-v02.api.letsencrypt.org/directory"
-  [acme.dnsChallenge]
-  provider = "cloudflare"
-  delayBeforeCheck = 0
-  [[acme.domains]]
-  main = "*.io"
+[web]
+address = ":8080"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "climatecapital.app"
-exposedByDefault = false
+domain = "ichasco.com"
+watch = true
+swarmmode = false
