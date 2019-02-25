@@ -1,5 +1,5 @@
 apt-get update
-curl -o ./aws-script.sh https://raw.githubcontent.com/kikoken/climatecapital/master/aws-script.sh
+curl -o ./aws-script.sh https://raw.githubusercontent.com/kikoken/climatecapital/master/aws-script.sh
 
 chmod +x ./aws-script
 ./aws-script
