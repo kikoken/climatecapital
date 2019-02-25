@@ -1,15 +1,13 @@
-version: "3"
-
+version: '3'
 services:
-  traefik:
-    image: traefik:alpine
+  web:
+    image: kikoken/climate-frontend
+    container_name: climate-frontend
     ports:
-      - 80:80
-    volumes:
-      - /traefik:/etc/traefik
-      - /var/run/docker.sock:/var/run/docker.sock
-  whoami:
-    image: emilevauge/whoami
-    labels:
-      - traefik.enable=true
-      - "traefik.frontend.rule=Host:whoami.docker.localhost"
+    - "3000:3000"
+    restart: always
+    networks:
+    - climate
+networks:
+  climate:
+    driver: bridge
