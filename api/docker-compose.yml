@@ -1,0 +1,35 @@
+version: '3'
+services:
+  back:
+    image: kikoken/api-climate
+    container_name: climate-api
+    ports:
+      - "8000:8000"
+    links:
+      - redisdb
+    depends_on:
+      - redisdb
+    restart: always
+    networks:
+      - traefik
+      - climate
+    labels:
+      - "traefik.backend=back"
+      - "traefik.frontend.rule=Host:climatecapital.cloud/api"
+      - "traefik.docker.network=traefik"
+  redisdb:
+    image: redis:5
+    container_name: climate-cache
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - climate
+    labels:
+      - "traefik.enable=false"
+  
+networks:
+  climate:
+    driver: bridge
+  traefik:
+    external: true
