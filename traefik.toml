@@ -1,7 +1,21 @@
-defaultEntryPoints = ["http"]
+defaultEntryPoints = ["http", "https"]
+
+[acme]
+  email = "info@ichasco.com"
+  storageFile = "/acme.json"
+  entryPoint = "https"
+  acmeLogging = true
+  onDemand = true
+  OnHostRule = true
+
 [entryPoints]
- [entryPoints.http]
-   address = ":80"
+  [entryPoints.http]
+    address = ":80"
+      [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+    address = ":443"
+     [entryPoints.https.tls]
 
 [web]
 address = ":8080"
