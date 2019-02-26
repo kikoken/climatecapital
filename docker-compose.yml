@@ -8,48 +8,14 @@ services:
       - 80:80
       - 443:443
       - 8080:8080
+      - 8000:8000
     volumes:
       - $PWD/traefik.toml:/traefik.toml
       - $PWD/acme.json:/acme.json
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
     - traefik
-  back:
-    image: kikoken/api-climate
-    enviroment:
-      - DARKSKY_TOKEN=f6f433ccdd900610359e5114cd0fcdee
-      - DARKSKY_URL=https://api.darksky.net/forecast/
-      - GOOGLE_API_KEY=AIzaSyA3RcpmWbh8vKcet1mk2dmYdJPdok6VHls
-      - GEOCODE_API=https://maps.googleapis.com/maps/api/geocode/json?latlng=
-      - REST_COUNTRY=https://restcountries.eu/rest/v2/
-    container_name: climate-api
-    ports:
-      - "8000:8000"
-    links:
-      - redisdb
-    depends_on:
-      - redisdb
-    restart: always
-    networks:
-      - traefik
-      - climate
-    labels:
-      - "traefik.backend=back"
-      - "traefik.frontend.rule=Host:climatecapital.cloud/api"
-      - "traefik.docker.network=traefik"
-  redisdb:
-    image: redis:5
-    container_name: climate-cache
-    ports:
-      - "6379:6379"
-    restart: always
-    networks:
-      - climate
-    labels:
-      - "traefik.enable=false"
   
 networks:
-  climate:
-    driver: bridge
   traefik:
     external: true
