@@ -9,7 +9,7 @@ services:
   nginx:
     image: nginx:alpine
     labels:
-      - "traefik.frontend.rule=Host:nginx.climatecapital.cloud"
+      - "traefik.frontend.rule=Host:climatecapital.cloud"
     networks:
       - traefik
   
