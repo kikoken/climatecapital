@@ -473,7 +473,7 @@ defaultEntryPoints = ["http"]
 # Optional
 # Default: true
 #
-exposedbydefault = false
+# exposedbydefault = false
 
 # Enable docker TLS connection
 #
