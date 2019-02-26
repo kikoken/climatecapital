@@ -3,6 +3,7 @@ services:
   traefik:
     image: traefik:alpine
     container_name: traefik
+    command: --docker
     ports:
       - 80:80
       - 443:443
