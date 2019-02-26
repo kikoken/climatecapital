@@ -14,14 +14,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - traefik
-  client:
-    image: nginx
-    container_name: 'nginx'
-    labels:
-      - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:api.climatecapital.cloud"
-    networks:
-      - traefik
 
 networks:
   traefik:

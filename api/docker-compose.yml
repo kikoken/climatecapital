@@ -6,12 +6,11 @@ services:
     ports:
       - "8000:8000"
     restart: always
-    networks:
-      - traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:docker.localhost/api"
-      - "traefik.docker.network=traefik"
+      - "traefik.frontend.rule=Host:climatecapital.cloud"
+    networks:
+      - traefik
   
   
 networks:
