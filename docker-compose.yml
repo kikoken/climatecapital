@@ -19,7 +19,7 @@ services:
     container_name: 'nginx'
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:dev.localhost"
+      - "traefik.frontend.rule=Host:api.climatecapital.cloud"
     networks:
       - traefik
 
