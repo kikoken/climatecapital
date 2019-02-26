@@ -3,12 +3,12 @@ services:
   traefik:
     image: traefik:alpine
     container_name: traefik
-    command: --web --docker --docker.domain=climatecapital.cloud
     ports:
       - 80:80
       - 443:443
       - 8080:8080
     volumes:
+      - $PWD/traefik.toml:/traefik.toml
       - $PWD/acme.json:/acme.json
       - /var/run/docker.sock:/var/run/docker.sock
     networks:

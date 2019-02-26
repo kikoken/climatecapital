@@ -3,13 +3,14 @@ services:
   apache:
     image: httpd:alpine
     labels:
+      - "traefik.port=80"
       - "traefik.frontend.rule=Host:apache.climatecapital.cloud"
     networks:
       - traefik
   nginx:
     image: nginx:alpine
     labels:
-      - "traefik.frontend.rule=Host:climatecapital.cloud"
+      - "traefik.frontend.rule=Host:nginx.climatecapital.cloud"
     networks:
       - traefik
   
