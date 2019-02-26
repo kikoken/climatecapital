@@ -1,22 +1,19 @@
 version: '3'
 services:
-  apache:
-    image: httpd:alpine
-    labels:
-      - traefik.enable=true
-      - "traefik.frontend.rule=Host:apache.climatecapital.cloud"
+  back:
+    image: kikoken/api-climate
+    container_name: climate-api
+    ports:
+      - "8000:8000"
+    restart: always
     networks:
       - traefik
-  nginx:
-    image: nginx:alpine
     labels:
-      - traefik.enable=true
-      - "traefik.frontend.rule=Host:nginx.climatecapital.cloud"
-    networks:
-      - traefik
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:docker.localhost/api"
+      - "traefik.docker.network=traefik"
+  
   
 networks:
-  climate:
-    driver: bridge
   traefik:
     external: true

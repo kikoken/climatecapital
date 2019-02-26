@@ -1,19 +1,28 @@
-version: '3'
+version: "3"
+
 services:
   traefik:
     image: traefik:alpine
-    container_name: traefik
+    container_name: 'traefik'
     ports:
       - 80:80
       - 443:443
       - 8080:8080
     volumes:
-      - $PWD/traefik.toml:/traefik.toml
-      - $PWD/acme.json:/acme.json
+      - ./traefik/traefik.toml:/traefik.toml
+      - ./traefik/acme.json:/acme.json
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-    - traefik
-  
+      - traefik
+  client:
+    image: nginx
+    container_name: 'nginx'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:dev.localhost"
+    networks:
+      - traefik
+
 networks:
   traefik:
     external: true
