@@ -15,7 +15,7 @@ services:
       - climate
     labels:
       - "traefik.backend=back"
-      - "traefik.frontend.rule=Host:climatecapital.cloud"
+      - "traefik.frontend.rule=Host:climatecapital.cloud/api"
       - "traefik.docker.network=traefik"
   redisdb:
     image: redis:5
