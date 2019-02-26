@@ -4,7 +4,7 @@ services:
     image: kikoken/api-climate
     container_name: climate-api
     ports:
-      - "80:8000"
+      - "8000:8000"
     links:
       - redisdb
     depends_on:
@@ -14,7 +14,8 @@ services:
       - traefik
       - climate
     labels:
-      - "traefik.backend=back"
+      - "traefik.enable=true"
+      - "traefik.backend=api-climate"
       - "traefik.frontend.rule=Host:climatecapital.cloud/api"
       - "traefik.docker.network=traefik"
   redisdb:
