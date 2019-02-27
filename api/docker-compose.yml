@@ -6,7 +6,7 @@ services:
     restart: always
     labels:
       - "traefik.backend=restapi"
-      - "traefik.frontend.rule=Host:api.climatecapital.cloud"
+      - "traefik.frontend.rule=Host:climatecapital.cloud/api"
       - "traefik.enable=true"
       - "traefik.port=8000"
     networks:
