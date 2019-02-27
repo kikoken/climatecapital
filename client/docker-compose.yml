@@ -4,8 +4,6 @@ services:
     image: kikoken/climate-frontend
     container_name: climate-frontend
     restart: always
-    expose:
-    - 3000
     labels:
       - "traefik.backend=client"
       - "traefik.frontend.rule=Host:climatecapital.cloud"
