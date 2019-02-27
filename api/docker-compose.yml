@@ -12,17 +12,19 @@ services:
     networks:
       - traefik
       - climate
+    enviroment:
+      - REDIS_URL=redis://cache
     links:
     - redisdb
     depends_on:
     - redisdb
   redisdb:
     image: redis:5
-    container_name: climate-cache
+    container_name: cache
     labels:
       - "traefik.enable=false"
-    ports:
-    - "6379:6379"
+    expose:
+    - 6379
     restart: always
     networks:
     - climate
