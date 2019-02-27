@@ -1,6 +1,6 @@
 version: '3'
 services:
-  api:
+  client:
     image: kikoken/climate-frontend
     container_name: climate-frontend
     restart: always
