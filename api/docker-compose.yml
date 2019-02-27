@@ -12,14 +12,12 @@ services:
     networks:
       - traefik
       - climate
-    enviroment:
-      - REDIS_URL=redis://cache
     links:
-    - redisdb
+    - redis
     depends_on:
-    - redisdb
-  redisdb:
-    image: redis:5
+    - redis
+  redis:
+    image: redis:latest
     container_name: cache
     labels:
       - "traefik.enable=false"
