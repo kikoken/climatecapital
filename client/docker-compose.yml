@@ -4,3 +4,13 @@ services:
     image: kikoken/climate-frontend
     container_name: climate-frontend
     restart: always
+    labels:
+      - "traefik.backend=client"
+      - "traefik.frontend.rule=Host:climatecapital.cloud"
+      - "traefik.enable=true"
+      - "traefik.port=3000"
+    networks:
+      - traefik
+networks:
+  traefik:
+    external: true
