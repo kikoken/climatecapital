@@ -11,8 +11,21 @@ services:
       - "traefik.frontend.rule=Host:api.climatecapital.cloud"
     networks:
       - traefik
+      - climate
+  redisdb:
+    image: redis:5
+    container_name: climate-cache
+    labels:
+      - "traefik.enable=false"
+    ports:
+    - "6379:6379"
+    restart: always
+    networks:
+    - climate
   
   
 networks:
+  climate:
+    driver: bridge
   traefik:
     external: true
