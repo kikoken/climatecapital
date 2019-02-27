@@ -12,6 +12,10 @@ services:
     networks:
       - traefik
       - climate
+    links:
+    - redisdb
+    depends_on:
+    - redisdb
   redisdb:
     image: redis:5
     container_name: climate-cache
